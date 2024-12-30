@@ -1,0 +1,29 @@
+TF when you just want straight, simple, declarative infrastructure. Most people have this use case. The simplicity, maturity, low learning curve and support win out.
+Pulumi if you need highly programmatic/dynamic infrastructure that is difficult/impossible to do with TF. There are cons that come with this increased flexibility. Way more footguns, a code dependency tree that now needs to be security scanned as there are now more avenues for a supply chain attack,  lots more room to over-engineer things.
+In the long term for the 2nd use case, I think CDKTF, while being younger, will probably win out over Pulumi due to Terraform's existing large user base.
+I’d be curious to know what you think are footguns in Pulumi; honestly, it sounds like you haven’t used it much.
+I’ve had way, way more issues maintaining large Terraform projects vs large Pulumi projects. Pulumi trivializes some things like backends, importing existing architecture, moving things between projects/stacks, visualizing changes, and staging out how things are deployed and what is dependent on what (without deploying your projects in a specific order).
+None of that even gets to the fact you’re now writing code instead of a markup language, which has its own benefits- especially when using Typescript, and can benefit from things like type checking against managed policy ARNs in AWS.
+Not disagreeing with many of your points but adding to it, Pulumi has a declarative language now:
+https://www.pulumi.com/docs/intro/languages/yaml/
+Better or not than TF, I can't say.
+Pulumu can do at least 90% of what Terraform does, just by instantiating objects, the most basic Python task.
+Given the full range of a real programming language: statements, conditionals, looping, etc. it is pretty obvious where the power far exceeds any DSL. Terraform, Helm etc all rule in a world where nobody wants to bother coding.
+Once you break out of this box, it's full steam ahead.
+When you factor in headcount cycling and coordination issues with multiple team members, it really depends on what tech debt you want to incur.
+Terraform tends to crystallize into a generically brittle and somewhat mismatched declarations with well trodden workarounds to handle provider faults or trying to just get flow control and batch management in a language that doesn't really support it. These problems are pretty universal and ubiquitous.
+Pulumi gives you the freedom to create new and innovative forms of tech debt bespoke to your organization prompting an unending desire to just refactor everything.
+Personally, I like a simple standard that solves 95%+ of use-cases. In other words, I don't want to come work at a company and hear "oh the last guy liked Pulumi and everything is written in C# soooo...".  Having IaC written in whatever feels most comfortable to the engineer who happens to be there that year is not a good business continuity strategy.
+Yes companies adopt standards that their apps and IaC are developed on but what I'm talking about 100% happens at a ton of small companies. If my company wanted to adopt Pulumi, we would 100% use YAML because everyone knows it and the chances that the next engineer behind you can pick up what you just laid down is extremely high vs. any other alternative...but that's of I was forced to use it.
+Terraform & Terragrunt every time
+Pulumi can easily cross-translate it’s IaC from one language to another, and it does support a very, very common standard: Typescript.
+There’s also YAML and the REST API, which are arguably both pretty standard as well.
+Even if the IaC is written in C and you don't know C you can extrapolate and read the state and start writting IaC with the language you know.
+If you only know HCL and not a single programming language then that's a huge problem and it's not related to Pulumi but you. The idea of a DevOps guy that does not know a single programming language still baffles me.
+Disclaimer: I am a Pulumi employee. I was also a Terraform user from the first release and some of my closest friends are former Terraform maintainers.
+Most of the comments here are following the same pattern that these threads usually take.
+Lots of people come along and say Pulumi is easier to use, more expressive, andmakes you more productive.
+Then a bunch of people come along and say "Terraform is the industry standard, HCL stops you from creating footguns,everyone knows HCL"
+Eventually we're going to have that suite of users who come along and say "yeah Pulumi makes you more productive, but do youreallywant your users creating your infrastructure?! they don't know what they're doing!"
+The industry is changing. Terraform was a very welcome and needed tool 5 years ago, but it isn't innovating in the space, it has a bunch of fundamental design flaws which are going to be very difficult to fix and the industry pioneers are very quickly moving to Pulumi.
+You have two choices: stick with the tool you're used to and that makes you feel safe or move with times and embrace a tool that is faster and empowers the engineers you're working with.
