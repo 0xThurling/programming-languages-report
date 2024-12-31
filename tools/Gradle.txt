@@ -1,8 +1,0 @@
-Gradle is a better build tool from a purely architectural point of view (though it is quite disliked, I believe mostly due to the ultra-complex android build system being built on top and giving it a bad name), but the Maven repo system is absolutely better than most contemporary repositories, proved by its comparably rare side-chain attacks.
-Also Groovy kinda sucks
-They should just make the right decision and deprecate all Groovy in favor of Kotlin.
-It's not like the kotlin DSL comes without problems. Configuration time is most of the time about doubled compared to Groovy, type hinting and completion often end up being slower _and_ worse than Groovy, and if you're lucky, your IDE suddenly can't find a random extension in your classpath and your entire build.gradle.kts or plugin becomes a red, squiggly mess.Unfortunately, Gradle is the best build tool I've used for complex systems. And it still fucking sucks.
-You hit the nail on its head. Deprecate Groovy and allocate all resources to make Kotlin more viable.
-I dislike it because of the ultra-complex build system that over-ambitious devops engineers ended up building in my shop. Our build system was the hardest part of our code base to reason about, which is pretty screwed up.
-Well, that’s on them — were they developers in any language they could have also made a mess there. I have seen my fair share of random custom maven plugins as well, which have more bugs than features.
-Perl programmers have been making that same argument for literally decades.
